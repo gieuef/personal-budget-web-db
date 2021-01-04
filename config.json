@@ -1,0 +1,40 @@
+{
+  "name": "",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "1e32e1f8787cf3cb9f52f8850822dcb6",
+      "css": "cogs",
+      "code": 59395,
+      "src": "elusive"
+    },
+    {
+      "uid": "f5686c8ccdc0213b081ef95678160b6d",
+      "css": "basket",
+      "code": 59392,
+      "src": "elusive"
+    },
+    {
+      "uid": "74b2f1d1ee541715b3f389f7cdf63d1c",
+      "css": "logout",
+      "code": 59393,
+      "src": "websymbols"
+    },
+    {
+      "uid": "554ee96588a6c9ee632624cd051fe6fc",
+      "css": "chart-pie",
+      "code": 61952,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "fhpup8jff2yw9kmuwavhyqxogczcbbhj",
+      "css": "dollar",
+      "code": 59394,
+      "src": "modernpics"
+    }
+  ]
+}

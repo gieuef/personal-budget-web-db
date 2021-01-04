@@ -1,0 +1,152 @@
+body
+{
+	/* Background pattern from subtlepatterns.com */
+	background-image: url("img/circles-light.png");
+	font-size: 20px;
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1
+{
+	font-size: 58px;
+}
+
+.bg-menu
+{
+	background-color:#caa520;
+}
+
+.navbar-nav li:hover > .dropdown-menu 
+{
+    display: block;
+    min-width: 100%;
+    text-align: center;
+}
+
+.menu {
+    text-align: center;
+	background-color: #f9f9f0;
+	padding: 50px;
+	margin-top: 100px;
+}
+
+.footer
+{
+	text-align: center;
+	color: #222222;
+}
+
+.square
+{
+	/*width: 50%;*/
+	background-color: #f9f9f0;
+	padding: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+	-webkit-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+	-moz-box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+	box-shadow: 3px 3px 30px 5px rgba(204,204,204,0.9);
+}
+
+input[type=text],
+input[type=password],
+input[type=mail]
+{
+	background-color: #efefef;
+	color: #666;
+	border: 2px solid #ddd;
+	border-radius: 5px;
+	font-size: 20px;
+	padding: 10px;
+	box-sizing: border-box;
+	outline: none;
+	margin-top: 10px;
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=mail]:focus
+{
+	-webkit-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	-moz-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
+	border: 2px solid #a5cda5;
+	background-color: #f8eed3;
+	color: #428c42;
+}
+
+input[type=submit]
+{
+	background-color: #e8c264;
+	font-size:20px;
+	color: white;
+	padding: 15px 10px;
+	margin-top: 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	letter-spacing: 2px;
+	outline: none;
+}
+
+input[type=submit]:focus
+{
+	-webkit-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+	-moz-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+	box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+}
+
+input[type=submit]:hover
+{
+	background-color: #e1b137;
+}
+
+input::-webkit-input-placeholder
+{
+    color: #999;
+}
+input:focus::-webkit-input-placeholder
+{
+    color: #428C42;
+}
+/* Firefox < 19 */
+input:-moz-placeholder
+{
+    color: #999;
+}
+input:focus:-moz-placeholder
+{
+    color: #428C42;
+}
+/* Firefox > 19 */
+input::-moz-placeholder
+{
+    color: #999;
+}
+input:focus::-moz-placeholder
+{
+    color: #428C42;
+}
+/* Internet Explorer 10 */
+input:-ms-input-placeholder
+{
+    color: #999;
+}
+input:focus:-ms-input-placeholder
+{
+    color: #428C42;
+}
+
+.formfield
+{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	
+	background-color:#f8eed3;
+	margin-bottom:30px;
+	border-radius: 5px;	
+	padding-bottom:10px;
+}
