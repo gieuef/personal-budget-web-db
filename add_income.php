@@ -1,41 +1,34 @@
 ﻿<?php
-session_start();
 
-require_once 'database.php';
-
-if (!isset($_SESSION['logged_id'])) {
+	session_start();
 	
-	if (isset($_POST['login'])) {
-		
-		$login = filter_input(INPUT_POST, 'login');
-		$password = filter_input(INPUT_POST, 'pass');
-		
-		$userQuery = $db->prepare('SELECT id, username, password, email FROM users WHERE email = :login');
-		$userQuery->bindValue(':login', $login, PDO::PARAM_STR);
-		$userQuery->execute();
-		
-		$user = $userQuery->fetch();
-		
-		if ($user && password_verify($password,$user['password'])){
-		//password_verify($password, $user['password']) 
-			$_SESSION['logged_id'] = $user['id'];
-			unset($_SESSION['bad_attempt']);
-		} else {
-			$_SESSION['bad_attempt'] = true;
-			header('Location: logging.php');
-			exit();
-		}
-		
-	} else {
-		
-		header('Location: logging.php');
-		exit();
+	require_once 'database.php';
 	
+	if (isset($_POST['amount']))
+	{
+		$result = $db->prepare('INSERT INTO incomes VALUES (NULL,:user_id,:incomes_category_assigned_to_users_id,:amount,:date_of_income,:income_comment)');
+		$result->bindValue(':user_id',$_SESSION['logged_id'],PDO::PARAM_INT);
+		$result->bindValue(':incomes_category_assigned_to_users_id', $_POST['income_category'] ,PDO::PARAM_INT);
+		$result->bindValue(':amount',$_POST['amount']);
+		$result->bindValue(':date_of_income',$_POST['date_of_income']);
+		$result->bindValue(':income_comment',$_POST['income_comment']);
+			
+		$result->execute();
+		
+		$added = true;
+		
 	}
-}
-
-?>
-
+	
+	
+	$result = $db->prepare('SELECT id,name FROM incomes_category_assigned_to_users WHERE user_id= :logged_id');
+	$result->bindValue(':logged_id',$_SESSION['logged_id'],PDO::PARAM_INT);
+	$result->execute();
+	
+	$incomes_category = $result->fetchAll();
+	
+	
+?>	
+	
 
 
 <!DOCTYPE HTML>
@@ -133,6 +126,73 @@ if (!isset($_SESSION['logged_id'])) {
 		</div>
 		
 		</section>
+		
+		<section>
+		
+		<div class="container-fluid my-4 py-4">
+		
+				<?php
+					if (isset($added) && ($added)) echo '<h2>Dodano przychód</h2>';
+				
+				?>
+				
+				
+					<form class="col-sm-10 col-md-8 col-lg-6 py-3 mx-auto square"  method="post" enctype="multipart/form-data">
+						
+						
+					 <div class="row justify-content-around">	
+						
+						<div class="col-sm-10 col-lg-8">
+							<label> Kwota <input type="number" name="amount" step="0.01"></label>
+						</div>
+						
+						<div class="col-sm-10 col-lg-8">
+							<label> Data <input type="date" name="date_of_income" id="today" ></label>
+						</div>						
+										
+						<script>
+						document.getElementById('today').value = new Date().toISOString().substring(0, 10);
+						</script>
+						
+				
+					
+						<div class="col-sm-10 col-lg-8">
+							<label>Kategoria:<label/>
+							<select class="form-select" name="income_category" >
+								<?php
+								foreach ($incomes_category as $category)
+								{
+									echo '<option value="'. $category['id'] .'">
+									'. $category['name'] .'
+									</option>';
+								
+								}
+								?>
+							</select>
+							
+						</div>
+						
+						
+						
+						
+						<div class="col-sm-10 col-lg-8">
+							<div><label for="komentarz"> Komentarz(opcjonalnie): </label></div>
+								<textarea name="income_comment" id="komentarz" rows="4" maxlength="100" ></textarea>
+						</div>
+						
+						<div class="col-sm-10 col-lg-8">
+					<button class="btn" type="submit">Zapisz</button>
+					<button class="btn" type="reset">Anuluj</button>
+				
+				</div>
+				
+				</div>
+				
+					</form>
+					
+					</div>
+					
+			</section>
 
 		</main>
 
